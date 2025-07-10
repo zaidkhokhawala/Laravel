@@ -1,0 +1,348 @@
+:root {
+  --accent-color: #C5A992;
+  --secondary-color: #C5A992;
+  --dark-color: #2f2f2f;
+  --light-color: #F3F2EC;
+  --body-text-color: #757575;
+  --light-text-color: #afafaf;
+  --dark-text-color: #2f2f2f;
+}
+
+
+
+
+
+/* Navbar links */
+.nav-link {
+  color: var(--dark-color) !important;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--accent-color) !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Header branding */
+.navbar h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(145deg, var(--accent-color), #a2886e);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Center navbar */
+.header-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  background-color: var(--light-color);
+}
+
+.nav {
+  margin-left: -110px;
+}
+
+/* Logout button in nav styled inline */
+.logout-form {
+  margin: -20px;
+  padding-left: 40px;
+}
+
+.logout-item {
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: var(--accent-color);
+  color: var(--dark-text-color);
+  border: solid rgba(158, 98, 43, 0.557) 3px;
+
+  font-size: 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+  background-color: #b88e71;
+  /* Slightly darker shade of --accent-color */
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background: var(--light-color);
+}
+
+/* Title */
+.dashboard-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--dark-text-color);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  flex: 1;
+  min-width: 250px;
+  background: linear-gradient(145deg, var(--light-color), #e0ddd6);
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25), -6px -6px 12px rgba(255, 255, 255, 0.7);
+}
+
+.dashboard-card i {
+  font-size: 40px;
+  color: var(--accent-color);
+  transition: transform 0.3s ease-in-out;
+}
+
+.dashboard-card:hover i {
+  transform: rotateY(360deg);
+}
+
+.dashboard-card h3 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: var(--dark-color);
+}
+
+.dashboard-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--body-text-color);
+}
+/* Parent .dropdown class */
+.menu-item.dropdown {
+    position: relative;
+}
+
+/* Hide submenu by default */
+.menu-item.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--light-color);
+    min-width: 180px;
+    z-index: 999;
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+/* Show on hover */
+.menu-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown items styling */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--dark-text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* Hover effect */
+.dropdown-menu li a:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Progress Section */
+.progress-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.progress-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--dark-color);
+}
+
+.progress {
+  width: 100%;
+  background-color: var(--light-text-color);
+  border-radius: 8px;
+  height: 25px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  text-align: center;
+  line-height: 25px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, var(--accent-color), #aa8b70);
+  animation: progressLoad 2s ease-in-out;
+}
+
+/* Table Section */
+.table-section {
+  margin-top: 30px;
+}
+
+.table-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--dark-color);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: linear-gradient(145deg, var(--light-color), #e3e3e3);
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.5);
+}
+
+.table thead {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:hover {
+  background: linear-gradient(145deg, #e6e6e6, var(--light-color));
+  transition: background 0.3s ease;
+}
+
+/* Task Section */
+.task-section {
+  margin-top: 30px;
+}
+
+.task-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--dark-color);
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  padding: 10px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease;
+  color: var(--body-text-color);
+}
+
+.task-list li:hover {
+  transform: scale(1.05);
+}
+
+/* Analytics Section */
+.analytics-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(145deg, var(--light-color), #dedbd4);
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.5);
+}
+
+.analytics-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--dark-color);
+}
+
+.analytics-section p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: var(--body-text-color);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progressLoad {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 75%;
+  }
+}

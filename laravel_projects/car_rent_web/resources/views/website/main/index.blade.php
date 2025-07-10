@@ -4,30 +4,188 @@
 <!-- define main content start point -->
 @section('main_content')
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8 col-sm-10">
-            <div class="card shadow-lg border-0 rounded-3">
-                <div class="card-body">
-                    <h4 class="text-center mb-4">Add New Task</h4>
-                    <form id="contact-form" action="index" method="post">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" autocomplete="on" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="project_name" class="form-label">project Name</label>
-                            <input type="text" name="project_name" id="project_name" class="form-control" placeholder="Enter project name" required>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-primary" type="submit" name="submit">Submit Task</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<section id="billboard">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
 
+				<button class="prev slick-arrow">
+					<i class="icon icon-arrow-left"></i>
+				</button>
+
+				<div class="main-slider pattern-overlay">
+					<div class="slider-item">
+						<div class="banner-content">
+							<h2 class="banner-title">Life of the Wild</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+							<div class="btn-wrap">
+								<a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More
+									<i class="icon icon-ns-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+						<img src="{{ asset('assets/images/main-banner1.jpg') }}" alt="banner" class="banner-image">
+					</div>
+
+					<div class="slider-item">
+						<div class="banner-content">
+							<h2 class="banner-title">Birds gonna be Happy</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+							<div class="btn-wrap">
+								<a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More
+									<i class="icon icon-ns-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+						<img src="{{ asset('assets/images/main-banner2.jpg') }}" alt="banner" class="banner-image">
+					</div>
+				</div>
+
+				<button class="next slick-arrow">
+					<i class="icon icon-arrow-right"></i>
+				</button>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="client-holder" data-aos="fade-up">
+	<div class="container">
+		<div class="row">
+			<div class="inner-content">
+				<div class="logo-wrap">
+					<div class="grid">
+						<a href="#"><img src="{{ asset('assets/images/client-image1.png') }}" alt="client"></a>
+						<a href="#"><img src="{{ asset('assets/images/client-image2.png') }}" alt="client"></a>
+						<a href="#"><img src="{{ asset('assets/images/client-image3.png') }}" alt="client"></a>
+						<a href="#"><img src="{{ asset('assets/images/client-image4.png') }}" alt="client"></a>
+						<a href="#"><img src="{{ asset('assets/images/client-image5.png') }}" alt="client"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="featured-books" class="py-5 my-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="section-header align-center">
+					<div class="title">
+						<span>Some quality items</span>
+					</div>
+					<h2 class="section-title">Featured Books</h2>
+				</div>
+
+				<div class="product-list" data-aos="fade-up">
+					<div class="row">
+
+						<div class="col-md-3">
+							<div class="product-item">
+								<figure class="product-style">
+									<img src="{{ asset('assets/images/product-item1.jpg') }}" alt="Books" class="product-item">
+									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+								</figure>
+								<figcaption>
+									<h3>Simple way of piece life</h3>
+									<span>Armor Ramsey</span>
+									<div class="item-price">$ 40.00</div>
+								</figcaption>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="product-item">
+								<figure class="product-style">
+									<img src="{{ asset('assets/images/product-item2.jpg') }}" alt="Books" class="product-item">
+									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+								</figure>
+								<figcaption>
+									<h3>Great travel at desert</h3>
+									<span>Sanchit Howdy</span>
+									<div class="item-price">$ 38.00</div>
+								</figcaption>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="product-item">
+								<figure class="product-style">
+									<img src="{{ asset('assets/images/product-item3.jpg') }}" alt="Books" class="product-item">
+									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+								</figure>
+								<figcaption>
+									<h3>The lady beauty Scarlett</h3>
+									<span>Arthur Doyle</span>
+									<div class="item-price">$ 45.00</div>
+								</figcaption>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="product-item">
+								<figure class="product-style">
+									<img src="{{ asset('assets/images/product-item4.jpg') }}" alt="Books" class="product-item">
+									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+								</figure>
+								<figcaption>
+									<h3>Once upon a time</h3>
+									<span>Klien Marry</span>
+									<div class="item-price">$ 35.00</div>
+								</figcaption>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="btn-wrap align-right">
+					<a href="#" class="btn-accent-arrow">View all products 
+						<i class="icon icon-ns-arrow-right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section id="subscribe">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="title-element">
+							<h2 class="section-title divider">Subscribe to our newsletter</h2>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="subscribe-content" data-aos="fade-up">
+							<p>Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur...</p>
+							<form id="form">
+								<input type="text" name="email" placeholder="Enter your email addresss here">
+								<button class="btn-subscribe">
+									<span>send</span>
+									<i class="icon icon-send"></i>
+								</button>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 @endsection

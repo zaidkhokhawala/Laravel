@@ -1,6 +1,6 @@
 <?php
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProjectController;
+
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,17 +11,37 @@ Route::get('/index', function () {
     return view('website.main.index');
 })->name('index');
 
-// Table Routes
-Route::get('/table', [ProjectController::class, 'index']);
-Route::delete('/table/{id}', [ProjectController::class, 'destroy'])->name('contact.delete');
+Route::get('/collection', function () {
+    return view('website.main.collection');
+})->name('collection');
 
-// Auth Routes
-Route::get('/register', [AdminController::class, 'register'])->name('register');
-Route::post('/register', [AdminController::class, 'store'])->name('register.form');
+Route::get('/offer', function () {
+    return view('website.main.offer');
+})->name('offer');
 
-Route::get('/login', [AdminController::class, 'login'])->name('login');
-Route::post('/login', [AdminController::class, 'cheklogin'])->name('login.check'); // ✅ change this to POST
+Route::get('/blog', function () {
+    return view('website.main.blog');
+})->name('blog');
 
-Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+Route::get('/app_d', function () {
+    return view('website.main.app_d');
+})->name('app_d');
 
-?>
+Route::get('/cart', function () {
+    return view('website.main.cart');
+})->name('cart');
+
+
+// admin routes
+Route::get('/admin_index', function () {
+    return view('admin.main.index');
+})->name('admin_index');
+
+
+Route::get('/add_product', function () {
+    return view('admin.main.add_product');
+})->name('add_product');
+
+Route::get('/mange_product', function () {
+    return view('admin.main.manage_product');
+})->name('manage_product');
