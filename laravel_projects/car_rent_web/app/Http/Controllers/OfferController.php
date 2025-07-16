@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
+use App\Models\Offer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
- use RealRashid\SweetAlert\Facades\Alert;
 
-class ProjectController extends Controller
+class OfferController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Project::all();
-        return view('website.main.table', ['data' => $data]);
+        //
     }
 
     /**
@@ -37,7 +35,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show(Offer $offer)
     {
         //
     }
@@ -45,7 +43,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Offer $offer)
     {
         //
     }
@@ -53,7 +51,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Offer $offer)
     {
         //
     }
@@ -61,22 +59,8 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-
-
-public function destroy($id)
-{
-    $project = Project::find($id);
-
-    if ($project) {
-        $project->delete();
-        Alert::success('Deleted!', 'Project deleted successfully.');
-    } else {
-        Alert::error('Error!', 'Project not found.');
+    public function destroy(Offer $offer)
+    {
+        //
     }
-
-    return redirect('/table');
-}
-
-
-
 }

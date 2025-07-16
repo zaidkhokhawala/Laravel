@@ -34,7 +34,7 @@
             <div class="container-fluid ">
                 <div class="row align-items-center justify-content-between d-flex">
 
-                    <div class="col-md-3 pl-5">
+                    <div class="col-md-2 pl-5">
                         <div class="main-logo">
                             <a href="index.php">
                                 <img src="{{ asset('assets/images/main-logo.png') }}" alt="logo">
@@ -42,28 +42,48 @@
                         </div>
                     </div>
 
-                    <div class="col-md-9 ">
+                    <div class="col-md-10 ">
                         <nav id="navbar">
                             <div class="main-menu stellarnav">
                                 <ul class="menu-list">
-                                    <li class="menu-item active"><a href="{{ route('index') }}">Dashboard</a></li>
+                                    <li class="menu-item active"><a href="{{ route('admin_index') }}">Dashboard</a></li>
                                     <li class="menu-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Product</a>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="{{ route('add_product') }}">Add Product</a></li>
-        <li><a class="dropdown-item" href="{{ route('manage_product') }}">Manage Product</a></li>
-    </ul>
-</li>
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Product</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{ route('add_product') }}">Add Product</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('manage_product') }}">Manage Product</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{ route('add_cat') }}">Add Category</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('manage_cat') }}">Manage Category</a></li>
+                                        </ul>
+                                    </li>
+                                     <li class="menu-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">offer</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{ route('add_offer') }}">Add offer</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('manage_offer') }}">Manage offer</a></li>
+                                        </ul>
+                                    </li>
 
-                                    <li class="menu-item"><a href="{{ route('offer') }}" class="nav-link">Offer</a></li>
-                                    <li class="menu-item"><a href="{{ route('blog') }}" class="nav-link">Blog</a></li>
-                                    <li class="menu-item"><a href="{{ route('app_d') }}" class="nav-link">Download App</a></li>
+                                    <li class="menu-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{ route('add_blog') }}">Add Blog</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('manage_blog') }}">Manage Blog</a></li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <li class="menu-item"><a href="{{ route('manage_user') }}" class="nav-link">Users</a></li>
                                     {{-- ✅ Logout Button --}}
                                     <li class="menu-item logout-item">
                                         <div action="" method="POST" class="logout-form">
                                             @csrf
                                             <button type="submit" class="logout-btn">Logout</button>
-</div>
+                                        </div>
                                     </li>
 
                                 </ul>

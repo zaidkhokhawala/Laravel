@@ -2,8 +2,8 @@
 
 @section('admin_content')
 <style>
-    .manage-cat-container {
-        max-width: 800px;
+    .manage-blog-container {
+        max-width: 1000px;
         margin: 40px auto;
         padding: 25px;
         background-color: var(--light-color);
@@ -11,7 +11,7 @@
         box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .manage-cat-container h2 {
+    .manage-blog-container h2 {
         text-align: center;
         font-size: 26px;
         color: var(--dark-text-color);
@@ -33,8 +33,7 @@
         color: white;
     }
 
-    .table th,
-    .table td {
+    .table th, .table td {
         padding: 12px 15px;
         text-align: center;
         border-bottom: 1px solid #ddd;
@@ -44,6 +43,18 @@
         background: linear-gradient(145deg, rgb(126, 0, 0), rgb(0, 0, 0));
         color: white;
         transition: 0.3s ease;
+    }
+
+    .blog-img {
+        width: 60px;
+        height: 45px;
+        border-radius: 6px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .blog-img:hover {
+        transform: scale(2);
     }
 
     .btn-action {
@@ -71,49 +82,42 @@
     }
 </style>
 
-<div class="manage-cat-container">
-    <h2>Manage Categories</h2>
+<div class="manage-blog-container">
+    <h2>Manage Blogs</h2>
 
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Category Name</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Content</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $row)
+            {{-- Sample rows --}}
             <tr>
-                <td>{{ $row->id }}</td>
-                <td>{{ $row->cat_name }}</td>
+                <td>1</td>
+                <td><img src="{{ asset('assets/images/blog1.jpg') }}" class="blog-img" alt="Blog Image"></td>
+                <td>Reading Tips</td>
+                <td>Lorem ipsum dolor sit amet, consectetur...</td>
                 <td>
-
-<a href="{{ route('category.edit', $row->id) }}"d }}" class="btn-action btn-edit">
-                    Edit</a>
-
-
-
-                    <a href="{{ route('category.destroy', $row->id) }}"
-   onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this category?')) {
-       document.getElementById('delete-form-{{ $row->id }}').submit();
-   }"
-   class="btn-action btn-delete">
-   Delete
-</a>
-
-<form id="delete-form-{{ $row->id }}" action="{{ route('category.destroy', $row->id) }}" method="POST" style="display: none;">
-    @csrf
-    @method('DELETE')
-</form>
-
-
+                    <a href="#" class="btn-action btn-edit">Edit</a>
+                    <a href="#" class="btn-action btn-delete">Delete</a>
                 </td>
-
             </tr>
-            @endforeach
+            <tr>
+                <td>2</td>
+                <td><img src="{{ asset('assets/images/blog2.jpg') }}" class="blog-img" alt="Blog Image"></td>
+                <td>Top 5 Books of 2025</td>
+                <td>Discover amazing titles to add to your list...</td>
+                <td>
+                    <a href="#" class="btn-action btn-edit">Edit</a>
+                    <a href="#" class="btn-action btn-delete">Delete</a>
+                </td>
+            </tr>
         </tbody>
-
     </table>
 </div>
 @endsection

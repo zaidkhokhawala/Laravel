@@ -23,7 +23,7 @@
                                 </a>
                             </figure>
                             <div class="post-item">
-                                <div class="meta-date">Mar 30, 2021</div>
+                               
                                 <h3><a href="#">Reading books always makes the moments happy</a></h3>
                                 <div class="links-element">
                                     <div class="categories">inspiration</div>
@@ -48,7 +48,7 @@
                                 </a>
                             </figure>
                             <div class="post-item">
-                                <div class="meta-date">Mar 29, 2021</div>
+                            
                                 <h3><a href="#">Reading books always makes the moments happy</a></h3>
                                 <div class="links-element">
                                     <div class="categories">inspiration</div>
@@ -73,7 +73,7 @@
                                 </a>
                             </figure>
                             <div class="post-item">
-                                <div class="meta-date">Feb 27, 2021</div>
+                        
                                 <h3><a href="#">Reading books always makes the moments happy</a></h3>
                                 <div class="links-element">
                                     <div class="categories">inspiration</div>

@@ -2,8 +2,8 @@
 
 @section('admin_content')
 <style>
-    .manage-cat-container {
-        max-width: 800px;
+    .manage-offer-container {
+        max-width: 1000px;
         margin: 40px auto;
         padding: 25px;
         background-color: var(--light-color);
@@ -11,7 +11,7 @@
         box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .manage-cat-container h2 {
+    .manage-offer-container h2 {
         text-align: center;
         font-size: 26px;
         color: var(--dark-text-color);
@@ -33,8 +33,7 @@
         color: white;
     }
 
-    .table th,
-    .table td {
+    .table th, .table td {
         padding: 12px 15px;
         text-align: center;
         border-bottom: 1px solid #ddd;
@@ -71,49 +70,42 @@
     }
 </style>
 
-<div class="manage-cat-container">
-    <h2>Manage Categories</h2>
+<div class="manage-offer-container">
+    <h2>Manage Offers</h2>
 
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Category Name</th>
+                <th>Offer Name</th>
+                <th>Old Price</th>
+                <th>Offer Price</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $row)
+            {{-- Sample rows --}}
             <tr>
-                <td>{{ $row->id }}</td>
-                <td>{{ $row->cat_name }}</td>
+                <td>1</td>
+                <td>Summer Sale</td>
+                <td>$150</td>
+                <td>$99</td>
                 <td>
-
-<a href="{{ route('category.edit', $row->id) }}"d }}" class="btn-action btn-edit">
-                    Edit</a>
-
-
-
-                    <a href="{{ route('category.destroy', $row->id) }}"
-   onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this category?')) {
-       document.getElementById('delete-form-{{ $row->id }}').submit();
-   }"
-   class="btn-action btn-delete">
-   Delete
-</a>
-
-<form id="delete-form-{{ $row->id }}" action="{{ route('category.destroy', $row->id) }}" method="POST" style="display: none;">
-    @csrf
-    @method('DELETE')
-</form>
-
-
+                    <a href="#" class="btn-action btn-edit">Edit</a>
+                    <a href="#" class="btn-action btn-delete">Delete</a>
                 </td>
-
             </tr>
-            @endforeach
+            <tr>
+                <td>2</td>
+                <td>Monsoon Deal</td>
+                <td>$200</td>
+                <td>$140</td>
+                <td>
+                    <a href="#" class="btn-action btn-edit">Edit</a>
+                    <a href="#" class="btn-action btn-delete">Delete</a>
+                </td>
+            </tr>
         </tbody>
-
     </table>
 </div>
 @endsection

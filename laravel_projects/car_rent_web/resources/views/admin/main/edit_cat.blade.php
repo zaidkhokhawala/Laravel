@@ -2,7 +2,7 @@
 
 @section('admin_content')
 <style>
-    .add-cat-container {
+    .edit-cat-container {
         max-width: 600px;
         margin: 30px auto;
         padding: 20px;
@@ -11,10 +11,12 @@
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .add-cat-container h2 {
+    .edit-cat-container h2 {
         text-align: center;
-        font-size: 24px;
+        font-size: 26px;
         color: var(--dark-text-color);
+        margin-bottom: 25px;
+        text-shadow: 1px 1px 2px #ccc;
     }
 
     .form-label {
@@ -22,6 +24,15 @@
         color: var(--dark-text-color);
         font-size: 14px;
         margin-bottom: 5px;
+        display: block;
+    }
+
+    .form-control {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        width: 100%;
     }
 
     .form-control:focus {
@@ -33,10 +44,14 @@
         background-color: var(--accent-color);
         border: none;
         color: white;
-        margin-left: 173px;
+        margin-top: 10px;
         font-weight: 600;
         border-radius: 100px;
-        width: 40%;
+        width: 50%;
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         transition: 0.3s ease-in-out;
         font-size: 15px;
     }
@@ -44,24 +59,21 @@
     .btn-submit:hover {
         background-color: #b38b6d;
     }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
 </style>
 
-<div class="add-cat-container">
-    <h2>Add New Category</h2>
+<div class="edit-cat-container">
+    <h2>Edit Category</h2>
 
-    <form method="POST" action="{{ route('store_cat') }}" enctype="multipart/form-data">
+    <form action="{{ route('category.update', $category->id) }}" method="POST">
         @csrf
+        @method('POST') {{-- or use PUT if your route is RESTful --}}
 
         <div class="form-group">
-            <label for="catName" class="form-label">Category Name :</label>
-            <input type="text" name="cat_name" id="catName" class="form-control" placeholder="Enter category name" required>
+            <label class="form-label">Category Name:</label>
+            <input type="text" name="cat_name" value="{{ $category->cat_name }}" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-submit">Add Category</button>
+        <button type="submit" class="btn-submit">Update Category</button>
     </form>
 </div>
 @endsection

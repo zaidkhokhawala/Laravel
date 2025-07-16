@@ -2,8 +2,8 @@
 
 @section('admin_content')
 <style>
-    .add-cat-container {
-        max-width: 600px;
+    .add-blog-container {
+        max-width: 650px;
         margin: 30px auto;
         padding: 20px;
         background-color: var(--light-color);
@@ -11,10 +11,11 @@
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .add-cat-container h2 {
+    .add-blog-container h2 {
         text-align: center;
         font-size: 24px;
         color: var(--dark-text-color);
+        margin-bottom: 20px;
     }
 
     .form-label {
@@ -50,18 +51,28 @@
     }
 </style>
 
-<div class="add-cat-container">
-    <h2>Add New Category</h2>
+<div class="add-blog-container">
+    <h2>Add New Blog</h2>
 
-    <form method="POST" action="{{ route('store_cat') }}" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
-            <label for="catName" class="form-label">Category Name :</label>
-            <input type="text" name="cat_name" id="catName" class="form-control" placeholder="Enter category name" required>
+            <label class="form-label">Blog Image :</label>
+            <input type="file" name="image" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-submit">Add Category</button>
+        <div class="form-group">
+            <label class="form-label">Blog Title :</label>
+            <input type="text" name="title" class="form-control" placeholder="Enter blog title" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Blog Content :</label>
+            <textarea name="content" rows="5" class="form-control" placeholder="Enter blog content" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-submit">Add Blog</button>
     </form>
 </div>
 @endsection

@@ -2,7 +2,7 @@
 
 @section('admin_content')
 <style>
-    .add-cat-container {
+    .add-offer-container {
         max-width: 600px;
         margin: 30px auto;
         padding: 20px;
@@ -11,10 +11,11 @@
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .add-cat-container h2 {
+    .add-offer-container h2 {
         text-align: center;
         font-size: 24px;
         color: var(--dark-text-color);
+        margin-bottom: 20px;
     }
 
     .form-label {
@@ -50,18 +51,28 @@
     }
 </style>
 
-<div class="add-cat-container">
-    <h2>Add New Category</h2>
+<div class="add-offer-container">
+    <h2>Add New Offer</h2>
 
-    <form method="POST" action="{{ route('store_cat') }}" enctype="multipart/form-data">
+    <form action="" method="POST">
         @csrf
 
         <div class="form-group">
-            <label for="catName" class="form-label">Category Name :</label>
-            <input type="text" name="cat_name" id="catName" class="form-control" placeholder="Enter category name" required>
+            <label for="offerName" class="form-label">Offer Name :</label>
+            <input type="text" name="name" id="offerName" class="form-control" placeholder="Enter offer name" required>
         </div>
 
-        <button type="submit" class="btn btn-submit">Add Category</button>
+        <div class="form-group">
+            <label for="oldPrice" class="form-label">Old Price ($):</label>
+            <input type="number" name="old_price" id="oldPrice" class="form-control" placeholder="Enter old price" required>
+        </div>
+
+        <div class="form-group">
+            <label for="offerPrice" class="form-label">Offer Price ($):</label>
+            <input type="number" name="offer_price" id="offerPrice" class="form-control" placeholder="Enter offer price" required>
+        </div>
+
+        <button type="submit" class="btn btn-submit">Add Offer</button>
     </form>
 </div>
 @endsection

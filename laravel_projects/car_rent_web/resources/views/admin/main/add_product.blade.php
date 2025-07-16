@@ -13,7 +13,7 @@
 
     .add-product-container h2 {
         text-align: center;
-      
+
         font-size: 24px;
         color: var(--dark-text-color);
     }
@@ -35,7 +35,7 @@
         background-color: var(--accent-color);
         border: none;
         color: white;
-  margin-left: 173px;
+        margin-left: 173px;
         font-weight: 600;
         border-radius: 100px;
         width: 40%;
@@ -68,7 +68,7 @@
 <div class="add-product-container">
     <h2>Add New Product</h2>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -80,6 +80,20 @@
             <label for="productName" class="form-label">Product Name :</label>
             <input type="text" name="name" id="productName" class="form-control" placeholder="Enter product name" required>
         </div>
+
+        <div class="form-group">
+            <label for="category" class="form-label">Select Category :</label>
+           <select name="cat_id" id="category" class="form-control" required>
+
+                <option value="">-- Select Category --</option>
+                @foreach($categories as $cat)
+                <option value="{{ $cat->id }}">{{ $cat->cat_name }}</option>
+                @endforeach 
+            
+            </select>
+        </div>
+      
+
 
         <div class="form-group ">
             <label for="productPrice" class="form-label">Price ($):</label>

@@ -1,6 +1,6 @@
 <?php
-
-
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,11 +37,47 @@ Route::get('/admin_index', function () {
     return view('admin.main.index');
 })->name('admin_index');
 
+Route::get('/manage_user', function () {
+    return view('admin.main.manage_user');
+})->name('manage_user');
 
-Route::get('/add_product', function () {
-    return view('admin.main.add_product');
-})->name('add_product');
+Route::get('/add_product', [ProductController::class, 'create'])->name('add_product');
+Route::post('/add_product', [ProductController::class, 'store'])->name('products.store');
+Route::get('/manage_product', [ProductController::class, 'index'])->name('manage_product');
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/edit_product/{id}', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/update_product/{id}', [ProductController::class, 'update'])->name('products.update');
 
-Route::get('/mange_product', function () {
-    return view('admin.main.manage_product');
-})->name('manage_product');
+
+
+
+Route::get('/add_cat', [CategoryController::class, 'create'])->name('add_cat');
+// for add form value in database
+Route::post('/add_cat', [CategoryController::class, 'store'])->name('store_cat');
+// Show edit form
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+
+// Update category
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+
+Route::get('/manage_cat', [CategoryController::class, 'index'])->name('manage_cat');
+
+
+Route::get('/add_offer', function () {
+    return view('admin.main.add_offer');
+})->name('add_offer');
+
+Route::get('/manage_offer', function () {
+    return view('admin.main.manage_offer');
+})->name('manage_offer');
+
+Route::get('/add_blog', function () {
+    return view('admin.main.add_blog');
+})->name('add_blog');
+
+Route::get('/manage_blog', function () {
+    return view('admin.main.manage_blog');
+})->name('manage_blog');

@@ -22,7 +22,7 @@
     .table {
         width: 100%;
         border-collapse: collapse;
-        background: linear-gradient(145deg, #ffffff, #e3e3e3);
+        background-color: #f7f7f7;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
@@ -33,14 +33,16 @@
         color: white;
     }
 
-    .table th, .table td {
+    .table th,
+    .table td {
         padding: 12px 15px;
         text-align: center;
         border-bottom: 1px solid #ddd;
     }
 
     .table tbody tr:hover {
-        background: linear-gradient(145deg, #f2f2f2, #ffffff);
+        background: linear-gradient(145deg, rgb(126, 0, 0), rgb(0, 0, 0));
+        color: white;
         transition: 0.3s ease;
     }
 
@@ -89,33 +91,46 @@
             <tr>
                 <th>Sr No</th>
                 <th>Image</th>
+                <th>Category</th>
                 <th>Name</th>
                 <th>Price ($)</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            {{-- Sample rows for preview --}}
+            @php $sr = 1; @endphp
+            @foreach ($product_data as $item)
+
             <tr>
-                <td>1</td>
-                <td><img src="{{ asset('assets/images/sample1.jpg') }}" class="product-img" alt="Product Image"></td>
-                <td>Smart Watch</td>
-                <td>120</td>
+                <td>{{ $sr++ }}</td>
                 <td>
-                    <a href="#" class="btn-action btn-edit">Edit</a>
-                    <a href="#" class="btn-action btn-delete">Delete</a>
+                    <img src="{{ asset('uploads/products/' . $item->image) }}" class="product-img" alt="Product Image">
+                </td>
+                <td>{{ $item->cat_id }}</td> {{-- You can change this to category name if you join tables --}}
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->price }}</td>
+                <td><a href="{{ route('products.edit', $item->id) }}" class="btn-action btn-edit">
+                    Edit</a>
+
+                    <a href="{{ route('products.destroy', $item->id) }}"
+                        onclick="event.preventDefault(); if(confirm('Are you sure to delete this product?'))
+                         document.getElementById('delete-form-{{ $item->id }}').submit();"
+                        class="btn-action btn-delete">Delete</a>
+
+                    <form id="delete-form-{{ $item->id }}" action="{{ route('products.destroy', $item->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+
                 </td>
             </tr>
+            @endforeach
+
+            @if($product_data->isEmpty())
             <tr>
-                <td>2</td>
-                <td><img src="{{ asset('assets/images/sample2.jpg') }}" class="product-img" alt="Product Image"></td>
-                <td>Wireless Headphones</td>
-                <td>89</td>
-                <td>
-                    <a href="#" class="btn-action btn-edit">Edit</a>
-                    <a href="#" class="btn-action btn-delete">Delete</a>
-                </td>
+                <td colspan="6">No products available.</td>
             </tr>
+            @endif
         </tbody>
     </table>
 </div>
