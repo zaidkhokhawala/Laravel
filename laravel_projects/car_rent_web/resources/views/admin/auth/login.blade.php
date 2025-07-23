@@ -1,11 +1,12 @@
-@include('sweetalert::alert')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Login</title>
+    <title>Admin Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {{-- Add your theme CSS here --}}
     <style>
         :root {
             --accent-color: #C5A992;
@@ -75,10 +76,11 @@
         }
 
         .login-btn {
-            width: 100%;
+            margin-left: 110px;
+            width: 50%;
             padding: 12px;
             background-color: var(--accent-color);
-            border: solid 2px;
+            border: solid 2px ;
             border-color: #2f2f2f;
             border-radius: 80px;
             color: white;
@@ -100,32 +102,32 @@
     </style>
 </head>
 <body>
+@include('sweetalert::alert')
+    <div class="login-box">
+        <h1>Admin Login</h1>
+<form method="POST" action="{{ route('admin.login.check') }}">
 
-<div class="login-box">
-    <h1>User Login</h1>
+            @csrf
 
-    <form method="POST" >
-        @csrf
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" >
+                @error('email')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" name="email" id="email" placeholder="Enter your email">
-            @error('email')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
-        </div>
+            <div class="form-group">   
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" >
+                @error('password')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <div class="form-group">   
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter your password">
-            @error('password')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <button type="submit" class="login-btn">Login</button>
-    </form>
-</div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
 
 </body>
 </html>

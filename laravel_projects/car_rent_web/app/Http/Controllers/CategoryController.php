@@ -41,8 +41,12 @@ class CategoryController extends Controller
         'cat_name' => $request->cat_name
     ]);
 
+  Alert::success('success', 'Category added successfully!');
+    return redirect()->route('manage_cat');
+
+
+
     // Redirect or message
-    return redirect()->route('manage_cat')->with('success', 'Category added successfully!');
     }
 
     /**

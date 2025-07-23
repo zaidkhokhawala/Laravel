@@ -80,10 +80,10 @@
                                     <li class="menu-item"><a href="{{ route('manage_user') }}" class="nav-link">Users</a></li>
                                     {{-- ✅ Logout Button --}}
                                     <li class="menu-item logout-item">
-                                        <div action="" method="POST" class="logout-form">
+                                        <form action="{{ route('admin_logout') }}" method="post" class="logout-form">
                                             @csrf
                                             <button type="submit" class="logout-btn">Logout</button>
-                                        </div>
+                                        </form>
                                     </li>
 
                                 </ul>

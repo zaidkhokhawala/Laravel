@@ -2,10 +2,22 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('website.main.index');
+})->name('index');
+
+
+Route::get('/user_login', function () {
+    return view('website.auth.login');
+})->name('user_login');
+
+
+Route::get('/user_register', function () {
+    return view('website.auth.register');
+})->name('user_register');
+
 
 Route::get('/index', function () {
     return view('website.main.index');
@@ -33,6 +45,29 @@ Route::get('/cart', function () {
 
 
 // admin routes
+
+// authadmin routes
+
+
+
+// Login form route - agar login ho chuka hai to dashboard bheje
+Route::get('/admin_login', [AdminController::class, 'loginForm'])
+    ->name('admin_login')->middleware('admin_before_login');
+    
+
+// Login check
+Route::post('/admin_login', [AdminController::class, 'loginCheck'])
+    ->name('admin.login.check')->middleware('admin_before_login');
+
+
+
+// Logout
+ Route::middleware('admin_after_login')->group(function () {
+Route::post('/admin_logout', [AdminController::class, 'destroy'])
+    ->name('admin_logout');
+
+
+
 Route::get('/admin_index', function () {
     return view('admin.main.index');
 })->name('admin_index');
@@ -81,3 +116,9 @@ Route::get('/add_blog', function () {
 Route::get('/manage_blog', function () {
     return view('admin.main.manage_blog');
 })->name('manage_blog');
+
+ });
+
+
+
+

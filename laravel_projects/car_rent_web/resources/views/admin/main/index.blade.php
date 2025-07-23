@@ -1,9 +1,12 @@
+
+
 @extends('admin.main.layout.main')
 
 @section('admin_content')
 
 <div class="dashboard-container">
-    <h1 class="dashboard-title">Dashboard Overview</h1>
+
+    <h1 class="dashboard-title">Welcome, {{ session('admin_username') }} <br> Dashboard Overview</h1>
     
     <div class="dashboard-cards">
         <div class="dashboard-card">

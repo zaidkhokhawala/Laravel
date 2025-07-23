@@ -2,64 +2,92 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\admin;
+use Illuminate\Support\Facades\DB;
+use App\Models\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
+
+
+    public function loginForm()
+    {
+        return view('admin.auth.login');
+    }
+
+    public function loginCheck(Request $request)
+    {
+
+
+
+        // Get admin by email
+        $admin = DB::table('admins')->where('email', $request->email)->first();
+
+        if ($admin) {
+            // Check password using Hash::check()
+            if (Hash::check($request->password, $admin->password)) {
+                // ✅ Password matched
+                 session([
+            'admin_id' => $admin->id,
+            'admin_username' => $admin->username, // store this
+        ]);
+               
+        
+  Alert::success('success', 'Login successful.');
+    return redirect()->route('admin_index');
+
+
+
+      
+            } else {
+                // ❌ Password incorrect
+                return back()->with('error', 'Incorrect password');
+            }
+        } else {
+            // ❌ Email not found
+            return back()->with('error', 'Email not registered');
+        }
+    }
+
+
+
+
+
+
+ public function destroy(Request $request)
+    {
+
+    $request->session()->forget('admin_id');
+    $request->session()->forget('admin_username');
+
+    // Redirect to login page after logout
+
+
+// Flash success message to session
+    Alert::success('Success', 'Logged out successfully.');
+
+    // Redirect with message
+    return redirect()->route('admin_login');
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      */
-
-    public function register()
-    {
-        return view('website.auth.register');
-    }
-
-    public function login()
-    {
-        return view('website.auth.login');
-    }
-
-
-    public function cheklogin(Request $request)
-    {
-
-        // Check email
-        $admin = Admin::where('email', $request->email)->first();
-
-        if (!$admin) {
-            Alert::error('Error', 'Email not registered');
-            return redirect()->route('register');
-        }
-
-        // Check password
-        if (!Hash::check($request->password, $admin->password)) {
-            Alert::error('Error', 'Wrong password');
-            return redirect()->back();
-        }
-
-        // Set session
-        Session::put('admin_id', $admin->id);
-        Session::put('admin_name', $admin->name);
-
-        Alert::success('Success', 'Login successful');
-        return redirect()->route('index'); // change this route to your homepage
-    }
-
-
-    public function logout()
-    {
-        // Session clear karna
-        Session::flush(); // sabhi session clear karega
-        Alert::success('Success', 'Logged out successfully');
-         return redirect()->route('login');
-    }
-
     public function index() {}
 
     /**
@@ -75,32 +103,13 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $admin = Admin::created([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-
-        Alert::success('Success', 'register successfull');
-        return redirect()->route('login');
-
-
-        // // Validation hata rahe ho abhi
-        // $admin = Admin::create([
-        //     'name'     => $request->name,
-        //     'email'    => $request->email,
-        //     'password' => Hash::make($request->password), // encrypted password
-        // ]);
-
-        // Alert::success('Success', 'Registered Successfully');
-
-        // return redirect()->route('login'); // login ka route hona chahiye
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(admin $admin)
+    public function show(Admin $admin)
     {
         //
     }
@@ -108,7 +117,7 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(admin $admin)
+    public function edit(Admin $admin)
     {
         //
     }
@@ -116,7 +125,7 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, admin $admin)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -124,8 +133,5 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(admin $admin)
-    {
-        //
-    }
+   
 }
